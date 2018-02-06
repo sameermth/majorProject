@@ -1,15 +1,15 @@
 <?php
 
-define ("HOST","localhost");
-define ("USER","root");
-define ("PASSWORD", "");
-define ("DATABASE","businessmanagement");
-
-$conn = new mysqli(HOST, USER, PASSWORD, DATABASE);
+	$host = "localhost";
+	$user = "root";
+	$pass = "";
+	$db   = "businessmanagement";
 
 
-if($conn->connect_error)
-	die( "connection error".$conn->connect_error);
+	$conn = new mysqli($host, $user, $pass, $db);
 
 
+	if($conn->connect_error)
+		die( "connection error".$conn->connect_error);
+	
 ?>
