@@ -8,9 +8,9 @@ if(isset($_POST['signin'])){
 	$pass= $_POST['password'];
 	
 	$sql = "SELECT username FROM owner WHERE username ='$user' and password = '$pass'";
-	//$query = "SELECT username FROM owner where username=\"$user\" password=\"$pass\"";
 	
 	$result = $conn -> query($sql);
+	print_r($result);
 	if($result->num_rows >0)
 		{
 			$row = $result->fetch_assoc();

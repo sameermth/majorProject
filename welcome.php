@@ -13,9 +13,7 @@ else
 {
 	$username = $_SESSION['username'];
 	$q = "SELECT owner_name, username FROM OWNER where username = '$username';";
-	
 	$result = $conn->query($q);
-	
 	$row = $result->fetch_assoc();
 	
 	$name = $row['owner_name'];
@@ -24,19 +22,18 @@ else
 	$q1 = "SELECT business_name FROM business INNER JOIN owner ON business.business_owner = owner.username where owner.username = '$username';";
 	
 	$result_business_name = $conn->query($q1);
-	
-	print_r($result_business_name);
+	$div ='';
 	
 	while($row_business_name = $result_business_name->fetch_assoc())
 	{
-		$div.='<div class="card">
-				<div class="card-header">
-				'.$row_business_name['business_name'].'
+		$div.='<div class="col-lg-4 offset-lg-4 col-sm-6 text-center">
+				<div class="card" style="margin: 10 10 10 10;">
+				<div class="card-body" style="padding: 5 10 5 10;">
+				<h5 class="card-title">'.$row_business_name['business_name'].'</h5>
+				<button type="button" href="#" class="btn btn-default" data-toggle = "modal" data-target="#myModal">LOGIN</button>
+				  </div>
 				</div>
-				<div class="card-body">
-					<a href"#" class="btn btn-default">Login</a>
-				<div>
-				</div>';
+			</div>';
 	}
 }
 ?>
@@ -69,7 +66,13 @@ else
   <body id="page-top">
 
     
-
+	<div class="row" style="margin-top: 15px;">
+		<div class="col-lg-1 col-md-3 col-sm-4 col-xs-6 offset-lg-10 offset-md-9 offset-sm-8 offset-xs-6 text-center">
+		<div class="logout-button text-center">
+			<a type = "button" href="<?php echo HOME_URL; ?>/logout.php" class="btn btn-default btn-radius">Log Out</a>
+		</div>
+		</div>
+	</div>
     <!-- Intro Header -->
 	<div class="bgclass">
 			</div>
@@ -77,27 +80,70 @@ else
       <div class="intro-body">
         <div class="container">
 			<div class="row ">
-				<div class="col-lg-2 ">
-					<h2 class="welcome"> Welcome,</h2>
+				<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 ">
+					<h2  >Welcome,</h2><h2 class="brand-heading business-owner"> <?php if(isset($name) && !empty($name)) echo $name; ?></h2>
 				</div>
-				<div class="col-lg-4 ">
-					<h1 class="brand-heading" id="business-owner" ><?php if(isset($name) && !empty($name)) echo $name; ?></h1>
-				</div>
-				<div class="col-lg-4 offset-lg-2">
-				<div class="card card-default card-business">
-					<div class="card-header">Your Businesses
-					</div>
-					<div class="card-body">
-						<?php if(isset($div)) echo $div; ?>
-					</div>
-				</div>
+				
 			</div>
+			
+			<div class="row">
+			  <?php if(isset($div)) echo $div; ?>
+			  </div>
 				
 		</div>
 	</div>
 	
 	</div>
 </header>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+	  
+		<h4 class="modal-title" style="color: #000">Login</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+      </div>
+      <div class="modal-body">
+        			<div class="row" id="login-form">
+			
+                <div class="col-md-12 col-lg-12 ">
+						<p style="color: red;">Login with owner username and mailed password</p>
+						<form role="form" action="<?php echo HOME_URL.'business_login.php' ?>" method="post" class="login-form">
+							<div class="row">
+							
+								<div class="form-group col-md-8 col-xs-4 offset-xs-2 offset-md-2">
+									<input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username-business">
+								</div>
+								
+							</div>
+							<div class="row">
+								<div class="form-group col-md-8 col-xs-4 offset-xs-2 offset-md-2">
+									<input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password-business">
+								</div>
+							</div>
+							<div class="row">
+							<div class="col-md-8 offset-md-2 text-center">
+								<button type="submit" class="btn btn-circle" name = "signin" id="button-submit-business"><i class="fa fa-check"></i></button>
+							</div>
+							</div>
+						</form>
+							
+		            </div>
+				</div>
+				
+			</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
  <!-- Bootstrap core JavaScript -->
     <script src="<?php echo HOME_URL.'/vendor/jquery/jquery.min.js'?>"></script>

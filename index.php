@@ -1,7 +1,40 @@
 <?php
-
+session_start();
 	include 'siteConfig.php';
-
+	$error='';
+	if(isset($_SESSION['username_error']))
+	{
+		
+		$error.='<div class="alert alert-danger">
+					<div class="row">
+						<div class="col-md-4 offset-md-4">
+						'.$_SESSION['username_error'].'
+						</div>
+					</div>
+				</div>';
+	}
+	if(isset($_SESSION['mobile_error']))
+	{
+		$error.='<div class="alert alert-danger">
+					<div class="row">
+						<div class="col-md-4 offset-md-4">
+						'.$_SESSION['mobile_error'].'
+						</div>
+					</div>
+				</div>';
+	}
+	if(isset($_SESSION['email_error']))
+	{
+		$error.='<div class="alert alert-danger">
+					<div class="row">
+						<div class="col-md-4 offset-md-4">
+						'.$_SESSION['email_error'].'
+						</div>
+					</div>
+				</div>';
+	}
+	
+	echo isset($error)&&!empty($error);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,17 +77,17 @@
 					<h1 class="brand-heading">ERP Light</h1>
 				</div>
 			</div>
-			<div class="row" id="register-login-button" >
+			<div class="row" id="register-login-button" <?php if(isset($error) && !empty($error)) echo "style=\"display: none;\"";?> >
 					<div class="col-md-1 offset-md-3 " id="login-button-text" style="display: block;">
 						<h4 >Login</h4>
 					</div>
-					<div class="col-md-1 col-xs-1">
+					<div class="col-md-1 ">
 							<a href="javascript:void(0)" id="login-button" style="display: block;" class="btn btn-circle" onclick="loginButton()"><i class="fa fa-angle-double-down animated"></i></a>
 					</div>
-					<div class="col-md-1  offset-md-2 col-xs-12" id="register-button-text" style="display: block;">
+					<div class="col-md-1  offset-md-2 col-xs-6 offset-xs-3" id="register-button-text" style="display: block;">
 						<h4 >Register</h4>
 					</div>
-					<div class="col-md-1 col-xs-12">
+					<div class="col-md-1	">
 						<a href="#" id="register-button" style="display: block;" class="btn btn-circle " onclick="registerButton();"><i class="fa fa-angle-double-down animated"></i></a>
 					</div>
 			</div>
@@ -86,7 +119,9 @@
 				</div>
 				
 			</div>
-			<div class="row" id="registration-form" style="display: none;">
+			<?php if(isset($error) && !empty($error)) echo $error;
+echo $error;			?>
+			<div class="row" id="registration-form" style="display: <?php isset($error)&&!empty($error) ? "" : "none"?>;">
                 <div class="col-md-4  offset-4">
 						<form role="form" action="<?php echo HOME_URL.'/register.php' ?>" method="post" class="login-form">
 								<div class="offset-11"><button id="cancel-register" type="button" class="btn btn-circle" onclick="cancelRegister()"><i class="fa fa-close"></i></button></div>

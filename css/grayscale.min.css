@@ -15,7 +15,7 @@ html{
 h1,h2,h3,h4,h5,h6{
 	font-family:Cabin,'Helvetica Neue',Helvetica,Arial,sans-serif;
 	font-weight:700;
-	margin:0 0 35px;
+	margin:0 0 20px;
 	letter-spacing:1px;
 	
 	}
@@ -45,14 +45,23 @@ p{
 		text-decoration:none;
 		color:#1d9b6c
 		}
+.logout-button{
+	margin: 10 10 0 0 !important;
+}
+
+.btn-radius{
+	border-radius: 5px!important;
+}
 		
 .welcome{
-	line-height: 155px;
 	vertical-align: bottom;
 }		
-.card-business{
-	background-color: rgba(245,245,245,1);
+.card, .card-header, .card-title, .card-body, .card-text{
+	background-color: rgba(245,245,245,.1)!important;
 	
+}
+.card{
+	border: 2px solid #fff;
 }
 .bgclass{
 		width : 100%;
@@ -78,7 +87,7 @@ p{
 		display:table;
 		width:100%;
 		height:auto;
-		padding:200px 0;
+		padding:100px 0;
 		text-align:center;
 		z-index: 10; 
 		position: relative;
@@ -89,9 +98,9 @@ p{
 			display:table-cell;
 			vertical-align:middle
 			}
-.masthead .intro-body .brand-heading{
-									font-size:50px
-									}
+.brand-heading{
+	font-size: 50px !important;
+}
 									
 .form-control{
 	border: 1px solid #fff;
@@ -115,7 +124,21 @@ p{
 	box-shadow: none!important;
 }
 
-#business-owner{
+#form-username-business{
+	border: 2px solid #000 !important;
+}
+#form-password-business{
+	border: 2px solid #000 !important;
+}
+
+#form-username-business:hover:focus{
+	boder: 2px solid #000 !important;
+}
+#form-password-business:hover:focus{
+	border: 2px solid #000 !important;
+}
+
+.business-owner{
 	text-transform: uppercase!important;
 }
 
@@ -137,6 +160,12 @@ p{
 	height: 50px!important;
 	color:#fff;
 	border: 2px solid #fff;
+}
+#button-submit-business{
+	width: 50px!important;
+	height:50px!important;
+	color: #000;
+	border: 2px solid #000;
 }
 
 
@@ -227,6 +256,10 @@ color: black !important;
 		
 		}
 		
+.card-title{
+	color: #fff !important;
+}
+		
 .btn-circle:focus,.btn-circle:hover{
 	color:#fff;
 	outline:0;
@@ -248,8 +281,8 @@ color: black !important;
 	}
 	
 .btn-default{
-	color:#42dca3;
-	border:1px solid #42dca3;
+	color:#fff;
+	border:1px solid #fff;
 	background-color:transparent
 	}
 	
@@ -257,7 +290,9 @@ color: black !important;
 	color:#000;
 	border:1px solid #42dca3;
 	outline:0;
-	background-color:#42dca3
+	background-color:#42dca3;
+	-moz-box-shadow: none!important;
+	box-shadow: none!important;
 	}
 
 .btn-submit{
