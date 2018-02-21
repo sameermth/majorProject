@@ -19,6 +19,12 @@ if(isset($_POST['signin'])){
 			$result->close();
 			header("location: ".HOME_URL."/welcome.php");
 		}
+		else
+		{
+			header("location: ./");
+		}
 	}
+	else
+		header("location: ./");
 
 ?>
