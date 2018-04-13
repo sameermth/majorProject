@@ -105,13 +105,72 @@ else
 			</div>
 			
 			  <?php if(isset($div)) echo $div; ?>
-				
+						
+			<div class="row">
+				<div class="col-md-4 offset-md-4 ">
+					<div class="text-center">
+						<a type="button" class="btn btn-default btn-radius" id="addbusiness" data-toggle="modal" data-target="#businessModal">ADD NEW BUSINESS</a>
+					</div>
+				</div>
+			</div>				
 		</div>
 	
 	
 	</div>
 </header>
 
+<!-- Modal -->
+						<div id="businessModal" class="modal fade" role="dialog">
+						  <div class="modal-dialog">
+											<!-- Modal content-->
+							<div class="modal-content">
+							  <div class="modal-header">
+								<h4 class="modal-title" style="color: black">ADD NEW BUSINESS</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							  </div>
+							  <div class="modal-body">
+							  
+								<form action="addbusiness.php" method="post">
+										<div class="form-group">
+				                    		<label class="sr-only" for="business_name">Business Name</label>
+				                        	<input type="text" name="business_name" placeholder="Enter Business Name..." class="form-control">
+				                        </div>
+				                        <div class="form-group">
+				                    		<label class="sr-only" for="business_address">Business Address</label>
+				                        	<input type="text" name="business_address" placeholder="Enter Business Address..." class="form-control">
+				                        </div>
+										<div class="form-group">
+				                    		<label class="sr-only" for="business_owner">Business Owner</label>
+											
+				                        	<input type="hidden" name="business_owner" value="<?php echo $username; ?>" class="form-control">
+				                        </div>
+										<div class="form-group">
+				                    		<label class="sr-only" for="business_password">Passwords</label>
+				                        	<input type="text" name="business_password" placeholder="Enter Business Password..." class="form-control">
+				                        </div>
+										<div class="form-group">
+				                    		<label class="sr-only" for="GSTIN">GSTIN</label>
+				                        	<input type="text" name="GSTIN" placeholder="Enter GST Registration Number..." class="form-control">
+				                        </div>
+										<div class="form-group">
+				                    		<label class="sr-only" for="business_pan">PAN</label>
+				                        	<input type="text" name="business_PAN" placeholder="Enter Business PAN..." class="form-control">
+				                        </div>
+										<div class="form-group">
+				                    		<label class="sr-only" for="business_mobile">Mobile</label>
+				                        	<input type="text" name="business_mobile" placeholder="Enter Business contact..." class="form-control">
+				                        </div>
+				                        <button type="submit" class="btn btn-black btn-radius" name = "addbusiness">ADD</button>					
+								</form>
+							  </div>
+							  <div class="modal-footer">
+								
+								<button type="button" class="btn btn-default btn-radius" data-dismiss="modal" >Close</button>
+							  </div>
+							</div>
+						</div>
+					</div>
+	
 
   </div>
 </div>

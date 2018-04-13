@@ -45,6 +45,17 @@ p{
 		text-decoration:none;
 		color:#1d9b6c
 		}
+		
+		
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    height: auto;
+    overflow-y: auto;
+	max-height: 300px !important;
+}
+
 .logout-button{
 	margin: 10 10 0 0 !important;
 }

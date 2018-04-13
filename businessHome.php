@@ -47,7 +47,13 @@ if(isset($_POST['business_login']))
 
  <body id="page-top">
 
-    
+    <div class="row" style="margin-top: 15px;">
+		<div class="col-lg-1 col-md-3 col-sm-4 col-xs-6 offset-lg-10 offset-md-9 offset-sm-8 offset-xs-6 text-center">
+		<div class="logout-button text-center">
+			<a type = "button" href="<?php echo HOME_URL; ?>/logout.php" class="btn btn-default btn-radius">Log Out</a>
+		</div>
+		</div>
+	</div>
 
     <!-- Intro Header -->
 	<div class="bgclass">
@@ -66,7 +72,7 @@ if(isset($_POST['business_login']))
 					</div>
 					
 					<div class="col-md-4 text-center">
-						<a href="#"  style="display: block;margin: 0 0 0 20%;"  class="btn-circle btn-circle-second text-center">sell</a>
+						<a href="sell.php"  style="display: block;margin: 0 0 0 20%;"  class="btn-circle btn-circle-second text-center">sell</a>
 					</div>
                     
 					<div class="col-md-4 text-center">

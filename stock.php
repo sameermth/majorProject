@@ -80,14 +80,24 @@ while($row_category = $category_result->fetch_assoc()){
 
 </head>
 <body id="page-top">
-
-    
+		
+		
 	<div class="row" style="margin-top: 15px;">
-		<div class="col-lg-1 col-md-3 col-sm-4 col-xs-6 offset-lg-10 offset-md-9 offset-sm-8 offset-xs-6 text-center">
-		<div class="logout-button text-center">
-			<a type = "button" href="<?php echo HOME_URL; ?>/logout.php" class="btn btn-default btn-radius">Log Out</a>
-		</div>
-		</div>
+			<div class="col-lg-1 col-md-2 col-sm-2 col-xs-3 offset-lg-8 offset-md-6 offset-sm-4 offset-xs-3 text-center pull-right">
+				<div class="logout-button text-center" style="margin-left: 30px;">
+					<a type = "button" href="<?php echo HOME_URL; ?>/sell.php" class="btn btn-default btn-radius">SELL</a>
+				</div>
+			</div>
+			<div class="col-lg-1 col-md-2 col-sm-2 col-xs-3">
+				<div class="logout-button text-center">
+					<a type = "button" href="<?php echo HOME_URL; ?>/manage.php" class="btn btn-default btn-radius">MANAGE</a>
+				</div>
+			</div>
+			<div class="col-lg-1 col-md-2 col-sm-2 col-xs-3">
+				<div class="logout-button text-center">
+					<a type = "button" href="<?php echo HOME_URL; ?>/logout.php" class="btn btn-default btn-radius">LOG OUT</a>
+				</div>
+			</div>
 	</div>
     <!-- Intro Header -->
 	<div class="bgclass">
@@ -105,7 +115,8 @@ while($row_category = $category_result->fetch_assoc()){
 							}
 						?>
 					</div>
-					<div class="row">
+					<div class="form-group text-center" >
+						<div class="row">
 						<div class="col-lg-1 col-md-2 col-sm-3  offset-lg-10 offset-md-9 offset-sm-8 pull right">
 							<button type="button" class="btn btn-default btn-radius" id="add_stock" data-toggle="modal" data-target="#myModal">ADD STOCK</button>
 						</div>
@@ -145,8 +156,7 @@ while($row_category = $category_result->fetch_assoc()){
 											</div>
 										</div>
 										<div class="col-md-2 form-group " style="top: 30px;">
-											<div class="form-group text-center" >
-												<button type="button" name="search_stock" class="btn btn-default btn-radius" onclick="checkStock($('#brand_options').val(),$('#model_options').val());" >Search</button>
+											<button type="button" name="search_stock" class="btn btn-default btn-radius" onclick="checkStock($('#brand_options').val(),$('#model_options').val());" >Search</button>
 											</div>
 										</div>
 									</div>
@@ -194,47 +204,113 @@ while($row_category = $category_result->fetch_assoc()){
 							  </div>
 							  <div class="modal-body">
 							  <div class="row">
-								<div class="col-md-1 offset-md-10 col-lg-1 offset-lg-10 col-sm-1 offset-sm-10">
-									<a href="#" type="button" class="btn btn-add" ><i class="fa fa-plus"></i></a>
+								<div class="col-md-1 offset-md-10 col-lg-1 offset-lg-10 col-sm-1 offset-sm-10" >
+									<a href="#" type="button" class="btn btn-add" style="position: fixed" onclick="addrow()"><i class="fa fa-plus"></i></a>
 								</div>
 							  </div>
-								<form role="form" action="" method="post" class="" id="modal_stock_form">
-									<div class="form-group">
-										<input type="text" name="serial" placeholder="Enter Serial Number" class="form-name form-control" id="modal-serial">
-									</div>
-									<div class="form-group">
-										<select name="category" class="form-control" id="modal-category">
-													<option value="0">Select Category</option>
-													<?php echo $options_category; ?>
+							  <div style="width : 1500px; margin-top: 35px">
+								
+								<form role="form" enctype="application/json" method="get" action="addstock.php"  id="modal_stock_form">
+								
+									<div id="form-element1" class="copy-row">
+										<div class="row">
+											<div class="form-group">
+												<input type="text" name="serial1" placeholder="Enter Serial Number" class="form-name form-control" id="modal-serial1">
+											</div>
+											<div class="form-group">
+												<select name="category1" class="form-control" id="modal-category1">
+															<option value="0">Select Category</option>
+															<?php echo $options_category; ?>
 												</select>
+											</div>
+											<div class="form-group">
+												<select name="brand1" class="form-control" id="modal-brand1" onchange="populateModels(this.value , 'modal', 'modal-model')">
+															<option value="0">Select Brand</option>
+															<?php echo $options; ?>
+														</select>
+											</div>
+											<div class="form-group">
+												<select name="model1" class="form-control" id="modal-model1">
+															<option value="0" id="model_option_1">Select Model</option>
+														</select>
+											</div>
+											<div class="form-group">
+												<input type="text" name="cp1" placeholder="Enter DP" class="form-name form-control" id="modal-cp1">
+											</div>
+											<div class="form-group">
+												<input type="text" name="mp1" placeholder="Enter MRP" class="form-name form-control" id="modal-mp1">
+											</div>
+											<div class="form-group">
+												<select name="tax1" class="form-control" id="modal-tax1">
+													<option value="0">0%</option>
+													<option value="5">5%</option>
+													<option value="12">12%</option>
+													<option value="18">18%</option>
+													<option value="28">28%</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<input type="hidden" name="status1" class="form-name form-control" id="status1" value="available">
+											</div>
+										</div>
 									</div>
 									<div class="form-group">
-										<input type="text" name="brand" placeholder="Enter Serial Number" class="form-name form-control" id="modal-serial">
+												<input type="hidden" name="business" class="form-name form-control" id="business" value="<?php echo $business_name; ?>">
 									</div>
 									<div class="form-group">
-										<input type="text" name="model" placeholder="Enter Serial Number" class="form-name form-control" id="modal-serial">
+												<input type="hidden" name="count" class="form-name form-control" id="count" value="1">
 									</div>
+									
+									<button type="submit" class="btn btn-default btn-black" id="modal-add-stock" name="addstock">Add</button>
 								</form>
+								</div>
 							  </div>
 							  <div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								
+								<button type="button" class="btn btn-default btn-black" data-dismiss="modal">Close</button>
 							  </div>
 							</div>
 						</div>
 					</div>
-	<script type="text/javascript">
-		function populateModels(brandName){
+					
+	<script >
+						var count=1;
+		function addrow(){
+								var num = $('.copy-row').length; 
+								var newNum = new Number(num+1);
+								
+								var newElem = $('#form-element'+num).clone().attr('id', 'form-element'+newNum);
+								newElem.find('#modal-serial'+num).attr('id', 'modal-serial'+newNum).attr('name','serial'+newNum).val("");
+								newElem.find('#modal-category'+num).attr('id', 'modal-category'+newNum).attr('name','category'+newNum);
+								newElem.find('#modal-brand'+num).attr('id', 'modal-brand'+newNum).attr('name','brand'+newNum);
+								newElem.find('#modal-model'+num).attr('id', 'modal-model'+newNum).attr('name','model'+newNum);
+								
+								newElem.find('#modal-cp'+num).attr('id', 'modal-cp'+newNum).attr('name','cp'+newNum).val("");
+								newElem.find('#modal-mp'+num).attr('id', 'modal-mp'+newNum).attr('name','mp'+newNum).val("");
+								newElem.find('#modal-tax'+num).attr('id', 'modal-tax'+newNum).attr('name','tax'+newNum).val("");
+								newElem.find('#status'+num).attr('id', 'status'+newNum).attr('name','status'+newNum);
+								count++;
+								$('#count').val(count);
+								$('#form-element'+num).after(newElem);
+							}
+							
+		function populateModels(brandName, modal, id){
 			$.ajax({ type: "post", url: "populateModels.php", data: ({brandName: brandName}), datatype: "json",
             success: function(data){
-				var models = $.parseJSON(data);
-				console.log(models);
+				var models = $.parseJSON(data);				
                 status = 'OK';
 				var opt='';
 				$.each(models, function(index, value) {
                         opt = opt + "<option value='"+value+"'>"+value+"</option>";
                     });
-					
+				if(typeof modal !== "undefined")
+				{
+					var new_id = '#'+id+count;
+					$(new_id).html(opt);
+				}
+				else{
 				$('#model_options').html(opt);
+				}
             },
             error: function(jqXHR, exception) { errorMySQL(jqXHR, exception); }
         });
