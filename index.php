@@ -1,11 +1,13 @@
 <?php
 	session_start();
+	include 'dbConfig.php';
 	include 'siteConfig.php';
 	$error_username='';
 	$error_mobile = '';
 	$error_email = '';
 	$div_success = '';
-	
+	if(isset($_SESSION['username']))
+		header("location: welcome.php");
 	if(isset($_SESSION['username_error']))
 	{
 		

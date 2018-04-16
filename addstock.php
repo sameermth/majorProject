@@ -49,7 +49,7 @@
 		
 		if($result === TRUE)
 		{
-			echo "data inserted";
+			header("location: stock.php");
 		}
 }
 ?>

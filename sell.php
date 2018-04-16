@@ -189,7 +189,39 @@ include 'dbConfig.php';
 												</div>
 											</div>
 										</div>
-										
+										<div id="order-form" style="display:none;">
+											<div class="row">
+												<div class="col-md-1 offset-md-10 col-lg-1 offset-lg-10 col-sm-1 offset-sm-10" >
+													<a href="#" type="button" class="btn btn-add" onclick="addrow()"><i class="fa fa-plus"></i></a>
+												</div>
+											 </div>
+											<div class="row">
+											<div class="col-md-6 offset-3 text-center">
+												<form role="form" method="get" action="order.php"  id="order-form">
+												
+													<div id="form-element1" class="copy-row">
+														<div class="row text-center">
+															<div class="form-group ">
+																<input type="text" name="serial1" placeholder="Enter Serial Number" class="form-name form-control" id="serial1">
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+																<input type="hidden" name="business" class="form-name form-control" id="business" value="<?php echo $business_name; ?>">
+													</div>
+													<div class="form-group">
+																<input type="hidden" name="customer" class="form-name form-control" id="form-customer-id" value="">
+													</div>
+													<div class="form-group">
+																<input type="hidden" name="count" class="form-name form-control" id="count" value="1">
+													</div>
+													
+													<button type="submit" class="btn btn-default btn-black btn-radius" id="order-button" name="order">Create Bill</button>
+												</form>
+												</div>
+											</div>
+										</div>
+										</div>
 									
 									</div>
 								</div>
@@ -201,75 +233,7 @@ include 'dbConfig.php';
 		</div>			
       </div>
     </header>
-	<div id="myModal" class="modal fade" role="dialog">
-						  <div class="modal-dialog">
-											<!-- Modal content-->
-							<div class="modal-content">
-							  <div class="modal-header">
-								<h4 class="modal-title" style="color: black">Order</h4>
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-							  </div>
-							  <div class="modal-body">
-							  <div class="row">
-								<div class="col-md-1 offset-md-10 col-lg-1 offset-lg-10 col-sm-1 offset-sm-10" >
-									<a href="#" type="button" class="btn btn-add" style="position: fixed" onclick="addrow()"><i class="fa fa-plus"></i></a>
-								</div>
-							  </div>
-							  <div style="width : 1500px; margin-top: 35px">
-								
-								<form role="form" method="get" action="order.php"  id="modal_stock_form">
-								
-									<div id="form-element1" class="copy-row">
-										<div class="row">
-											<div class="form-group">
-												<input type="text" name="serial1" placeholder="Enter Serial Number" class="form-name form-control" id="modal-serial1">
-											</div>
-											<div class="form-group">
-												<select name="category1" class="form-control" id="modal-category1">
-															<option value="0">Select Category</option>
-															<?php echo $options_category; ?>
-												</select>
-											</div>
-											<div class="form-group">
-												<select name="brand1" class="form-control" id="modal-brand1" onchange="populateModels(this.value , 'modal', 'modal-model')">
-															<option value="0">Select Brand</option>
-															<?php echo $options; ?>
-														</select>
-											</div>
-											<div class="form-group">
-												<select name="model1" class="form-control" id="modal-model1">
-															<option value="0" id="model_option_1">Select Model</option>
-														</select>
-											</div>
-											<div class="form-group">
-												<input type="text" name="mp1" placeholder="Enter Rate" class="form-name form-control" id="modal-mp1">
-											</div>
-											<div class="form-group">
-												<input type="text" name="tax1" placeholder="Enter Rate" class="form-name form-control" id="modal-tax1">
-											</div>
-											<div class="form-group">
-												<input type="hidden" name="status1" class="form-name form-control" id="status1" value="sold">
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-												<input type="hidden" name="business" class="form-name form-control" id="business" value="<?php echo $business_name; ?>">
-									</div>
-									<div class="form-group">
-												<input type="hidden" name="count" class="form-name form-control" id="count" value="1">
-									</div>
-									
-									<button type="submit" class="btn btn-default btn-black" id="modal-add-stock" name="addstock">Add</button>
-								</form>
-								</div>
-							  </div>
-							  <div class="modal-footer">
-								
-								<button type="button" class="btn btn-default btn-black" data-dismiss="modal">Close</button>
-							  </div>
-							</div>
-						</div>
-					</div>
+							
 					
 
 
@@ -293,8 +257,8 @@ include 'dbConfig.php';
 							$('#customer-email').html(customer_detail['email']);
 							$('#customer-mobile').html(customer_detail['mobile']);
 							$('#customer-address').html(customer_detail['address']);
-							sessionStorage.setItem("customer_id", customer_detail['customer-id']);
 							$('#customer-detail').show();
+							$('#form-customer-id').val(customer_detail['customer_id']);
 						}
 			},
 			error: function(data){
@@ -312,13 +276,11 @@ include 'dbConfig.php';
 		
 		function addrow(){
 								var num = $('.copy-row').length; 
-								var newNum = new Number(num+1);
-								
+								console.log(num);
+								var newNum = num+1;
+								console.log(newNum);
 								var newElem = $('#form-element'+num).clone().attr('id', 'form-element'+newNum);
-								newElem.find('#serial'+num).attr('id', 'modal-serial'+newNum).attr('name','serial'+newNum).val("");
-								newElem.find('#mp'+num).attr('id', 'modal-mp'+newNum).attr('name','mp'+newNum).val("");
-								newElem.find('#tax'+num).attr('id', 'modal-tax'+newNum).attr('name','tax'+newNum).val("");
-								newElem.find('#status'+num).attr('id', 'status'+newNum).attr('name','status'+newNum);
+								newElem.find('#serial'+num).attr('id', 'serial'+newNum).attr('name','serial'+newNum).val("");
 								count++;
 								$('#count').val(count);
 								$('#form-element'+num).after(newElem);
