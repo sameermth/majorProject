@@ -46,6 +46,9 @@ p{
 		color:#1d9b6c
 		}
 		
+.font-white{
+	color: #fff!important;
+}
 		
 .modal-dialog{
     overflow-y: initial !important

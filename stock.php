@@ -24,15 +24,15 @@ else
 }
 
 if(isset($business_name) && !empty($business_name)){
-$query_total_stock = "SELECT COUNT(*) FROM product INNER JOIN business on product.business = business.business_name where business.business_name='$business_name';";
+$query_total_stock = "SELECT COUNT(*) FROM product INNER JOIN business on product.business = business.business_name where business.business_name='$business_name' AND availability = 'available';";
 $result_total_stock = $conn->query($query_total_stock);
 $row_total_stock = $result_total_stock->fetch_assoc();
 
-$query_brand = "SELECT name FROM brand ORDER BY name;";
+$query_brand = "SELECT DISTINCT brand FROM businessbrandmapping WHERE business = '$business_name' ORDER BY brand;";
 $brand_result = $conn->query($query_brand);
 
 while( $row_brand = $brand_result->fetch_assoc() ){
-		$options .= '<option value="'.$row_brand['name'].'">'.$row_brand['name'].'</option>';	
+		$options .= '<option value="'.$row_brand['brand'].'">'.$row_brand['brand'].'</option>';	
 		}
 
 
