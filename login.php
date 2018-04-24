@@ -17,14 +17,14 @@ if(isset($_POST['signin'])){
 			session_start();
 			$_SESSION['username'] = $row['username'];
 			$result->close();
-			header("location: ".HOME_URL."/welcome.php");
+			//header("location: ".HOME_URL."/welcome.php");
 		}
 		else
 		{
-			header("location: ./");
+			//header("location: ./");
 		}
 	}
 	else
-		header("location: ./");
+		//header("location: ./");
 
 ?>

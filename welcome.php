@@ -13,8 +13,9 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username']))
 else
 {
 	$username = $_SESSION['username'];
-	$q = "SELECT owner_name, username FROM OWNER where username = '$username';";
+	$q = "SELECT owner_name, username FROM owner where username = '$username';";
 	$result = $conn->query($q);
+	
 	$row = $result->fetch_assoc();
 	
 	$name = $row['owner_name'];
