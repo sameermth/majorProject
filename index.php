@@ -114,13 +114,13 @@
 							<div class="row">
 							
 								<div class="form-group col-md-4 col-xs-4 offset-xs-2 offset-md-4">
-									<input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username">
+									<input type="text" x-webkit-speech name="username" placeholder="Username..." class="form-username form-control" id="form-username">
 								</div>
 								
 							</div>
 							<div class="row">
 								<div class="form-group col-md-4 col-xs-4 offset-xs-2 offset-md-4">
-									<input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
+									<input type="password" x-webkit-speech name="password" placeholder="Password..." class="form-password form-control" id="form-password">
 								</div>
 							</div>
 							<div class="row">
@@ -140,28 +140,28 @@
 						<form role="form" action="<?php echo HOME_URL.'/register.php' ?>" method="post" class="login-form">
 								<div class="offset-11"><button id="cancel-register" type="button" class="btn btn-circle" onclick="cancelRegister()"><i class="fa fa-close"></i></button></div>
 								<div class="form-group">
-									<input type="text" name="Name" placeholder="Enter Name..." class="form-name form-control" id="form-name">
+									<input type="text" name="Name" placeholder="Enter Name..." class="form-name form-control" id="form-register-name">
 								</div>
 								<div class="form-group">
-									<input type="text" name="username" placeholder="Enter a Username..." class="form-username form-control" id="form-username">
+									<input type="text" name="username" placeholder="Enter a Username..." class="form-username form-control" id="form-register-username">
 									<?php if(isset($error_username) && !empty($error_username)) echo $error_username; ?>
 								</div>
 								<div class="form-group">
-									<input type="email" name="email" placeholder="Enter email..." class="form-email form-control" id="form-email">
+									<input type="email" name="email" placeholder="Enter email..." class="form-email form-control" id="form-register-email">
 									<?php if(isset($error_email) && !empty($error_email)) echo $error_email; ?>
 								</div>
 								<div class="form-group">
-									<input type="password" name="password" placeholder="Enter Password..." class="form-password form-control" id="form-password">
+									<input type="password" name="password" placeholder="Enter Password..." class="form-password form-control" id="form-register-password">
 								</div>
 								<div class="form-group">
-									<input type="password" name="passwordCheck" placeholder="Enter Password Again..." class="form-password form-control" id="form-passwordCheck">
+									<input type="password" name="passwordCheck" placeholder="Enter Password Again..." class="form-password form-control" id="form-register-passwordCheck">
 								</div>
 								<div class="form-group">
-									<input type="tel" name="mobile" placeholder="Enter Mobile Number..." class="form-mobile form-control" id="form-mobile">
+									<input type="tel" name="mobile" placeholder="Enter Mobile Number..." class="form-mobile form-control" id="form-register-mobile">
 									<?php if(isset($error_mobile) && !empty($error_mobile)) echo $error_mobile; ?>
 								</div>
 								<div class="form-group ">
-									<input type="text" name="address" placeholder="Enter Your Address..." class="form-address form-control" id="form-address">
+									<input type="text" name="address" placeholder="Enter Your Address..." class="form-address form-control" id="form-regiter-address">
 								</div>
 					
 								<button type="submit" class="btn btn-circle" name = "registration" id="button-submit"><i class="fa fa-check"></i></button>

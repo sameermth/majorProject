@@ -37,7 +37,7 @@
 			}
 		}
 		
-		$query_bill = "INSERT INTO bill SET date='$billdate', business='$business',customer='$customer_id', amount = '$billamount';";
+		$query_bill = "INSERT INTO bill SET id = '$billid', date='$billdate', business='$business',customer='$customer_id', amount = '$billamount';";
 		$result_bill = $conn->query($query_bill);
 		
 		$conn -> query("UPDATE customercount SET value = value+1;");
